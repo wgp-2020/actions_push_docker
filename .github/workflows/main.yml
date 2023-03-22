@@ -1,0 +1,32 @@
+name: Build and Push Docker Image
+on: 
+  workflow_dispatch: #手动触发工作流
+   inputs:
+    repository:
+        description: '目标仓库'
+        required: true
+        type: string
+     name:
+        description: '镜像名称'
+        required: true
+        type: string
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 签出目标仓库
+      uses: actions/checkout@v3
+      with:
+         repository: ${{ inputs.repository }}
+      
+    - name: 制作镜像并上传
+      uses: docker/build-push-action@v2
+      with:
+        context: .
+        push: true
+        tags: ${{ inputs.name }}
+      env:
+        DOCKER_USERNAME: ${{ secrets.username }}
+        DOCKER_PASSWORD: ${{ secrets.password }}
