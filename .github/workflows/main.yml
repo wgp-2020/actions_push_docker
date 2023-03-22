@@ -6,7 +6,7 @@ on:
         description: '目标仓库'
         required: true
         type: string
-     name:
+    name:
         description: '镜像名称'
         required: true
         type: string
