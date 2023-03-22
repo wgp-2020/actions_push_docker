@@ -28,5 +28,5 @@ jobs:
         push: true
         tags: ${{ inputs.name }}
       env:
-        DOCKER_USERNAME: ${{ secrets.username }}
-        DOCKER_PASSWORD: ${{ secrets.password }}
+        DOCKER_USERNAME: ${{ secrets.USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.PASSWORD }}
